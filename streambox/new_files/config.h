@@ -53,7 +53,7 @@
 #define CONFIG_JOIN_HT_PARTITIONS 		4
 
 /* how many threads used by the source? 1 is default; 3 seems okay for intense cases. */
-#define CONFIG_SOURCE_THREADS 				1
+#define CONFIG_SOURCE_THREADS 				2
 
 #define CONFIG_MIN_PERNODE_BUFFER_SIZE_MB		200UL  /* around 3x cache? */
 #define CONFIG_MIN_EPOCHS_PERNODE_BUFFER		2UL /* how many epochs before the input buffer wraps around? */

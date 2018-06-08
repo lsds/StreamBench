@@ -61,7 +61,9 @@ pipeline_config config = {
 		.records_per_interval = 400*1000,
 		.target_tput = (800 * 1000),
 		.record_size = 1000,
-		.input_file = "/home/grt17/streambox_release_March_10_2018/testFiles/Data.txt",
+		.input_file = 
+"/home/george/Desktop/testcrap/data_test/Data.txt"
+        ,
 		.cores = 8,//std::thread::hardware_concurrency() - 1,
 };
 #else
@@ -69,7 +71,9 @@ pipeline_config config = {
         .records_per_interval = (1 * 128/2 * 10 * 1000),
         .target_tput = (2 * 1 * 135 * 10 * 1000),
         .record_size = 136,
-        .input_file = "/home/grt17/new_streambox/streambox_release_March_10_2018/testFiles/Data2.txt",
+        .input_file = 
+"/home/george/Desktop/testcrap/data_test/Data.txt"
+        ,
         .cores = 1,//std::thread::hardware_concurrency() - 1,
 };
 #endif
@@ -77,7 +81,7 @@ pipeline_config config = {
 void testYahooBenchmark()
 {
 
-    config.cores = 8;
+    config.cores = 2;
 
     using namespace boost::uuids;
     using KVPair = pair<creek::string, creek::string>;
@@ -90,7 +94,9 @@ void testYahooBenchmark()
     //boost::uuids::random_generator random_uuid;
     //boost::uuids::string_generator parse_uuid;
 
-    std::ifstream infile("/home/grt17/new_streambox/streambox_release_March_10_2018/testFiles/CampAds.txt");
+    std::ifstream infile(
+"/home/george/Desktop/testcrap/data_test/CampAds.txt"
+        );
     std::string line;
     vector<string> myString;
     int i = 0;

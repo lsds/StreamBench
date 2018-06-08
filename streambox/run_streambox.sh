@@ -1,10 +1,22 @@
 #!/bin/sh
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PATH_TO_SB=$DIR/streambox_release_March_10_2018/streambox
+
 echo "Downloading StreamBox..."
 wget ftp://ftp.ecn.purdue.edu/xzl/software/streambox/streambox-last.tar.gz
 tar -xvzf streambox-last.tar.gz 
 
 echo "Copying new Files..."
+tar -xvzf data.tar.gz
+
+Data_PATH=$DIR/data_test/Data.txt
+Campaigns_PATH=$DIR/data_test/CampAds.txt
+sed -i '65s#.*#"'$Data_PATH'"#' new_files/test-yahoo.cpp
+sed -i '75s#.*#"'$Data_PATH'"#' new_files/test-yahoo.cpp
+sed -i '98s#.*#"'$Campaigns_PATH'"#' new_files/test-yahoo.cpp
+
+
 cp new_files/Unbounded.cpp streambox_release_March_10_2018/streambox/Source/
 cp new_files/Unbounded.h streambox_release_March_10_2018/streambox/Source/
 cp new_files/UnboundedInMemEvaluator.h streambox_release_March_10_2018/streambox/Source/
@@ -21,6 +33,7 @@ cp new_files/YahooBenchmarkSource.cpp streambox_release_March_10_2018/streambox/
 cp new_files/YahooBenchmarkSource.h streambox_release_March_10_2018/streambox/Source/
 cp new_files/YahooBenchmarkSourceEvaluator.h streambox_release_March_10_2018/streambox/Source/
 cp new_files/SimpleSelect.h streambox_release_March_10_2018/streambox/Select/
+
 
 
 echo "Installing Dependencies..."
@@ -46,8 +59,6 @@ sudo apt-get install \
     libssl-dev;
 
 echo "Compiling benchmark..."
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PATH_TO_SB=$DIR/streambox_release_March_10_2018/streambox
 cd $PATH_TO_SB
 /usr/bin/cmake -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" $PATH_TO_SB
 make test-yahoo.bin
