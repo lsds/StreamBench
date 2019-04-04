@@ -18,7 +18,7 @@ class LocalKafka(
                   spark: SparkSession,
                   numKafkaNodes: Int = 1,
                   stopSparkOnKafkaNodes: Boolean = false,
-                  kafkaVersion: String = "0.10.2.1") extends Serializable with SSHUtils {
+                  kafkaVersion: String = "2.2.0") extends Serializable with SSHUtils {
 
   @transient val sc = spark.sparkContext
 
